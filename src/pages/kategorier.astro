@@ -1,0 +1,64 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout title="Jesper Williander">
+  <main class="relative w-full h-screen overflow-hidden">
+    <!-- Baggrundsvideo -->
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      class="absolute inset-0 w-full h-full object-cover opacity-100 z-10 mix-blend-overlay"
+    >
+      <source src="/videos/støj.mp4" type="video/mp4" />
+    </video>
+
+    <!-- TV overlay -->
+    <img
+      src="/images/tv.svg"
+      alt="TV Overlay"
+      class="absolute inset-0 w-full h-full object-cover z-20 pointer-events-none"
+    />
+
+    <!-- Logo/menu til venstre -->
+    <a
+      href="/"
+      class="absolute left-35 top-26 -translate-y-1/2 z-30 flex flex-col items-center group"
+    >
+      <img src="public/images/logo.png" alt="Logo" class="w-30 h-30 mb-2" />
+
+      <!-- Kategorier centreret -->
+      <nav
+        class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 flex flex-col items-center space-y-20"
+      >
+        <a
+          href="/billeder"
+          class="text-white font-['Jersey_10'] text-6xl tracking-widest transition-colors duration-300 hover:text-[#4bae46]"
+          >Billeder</a
+        >
+        <a
+          href="/videoer"
+          class="text-white font-['Jersey_10'] text-6xl tracking-widest transition-colors duration-300 hover:text-[#4bae46]"
+          >Videoer</a
+        >
+        <a
+          href="/musik"
+          class="text-white font-['Jersey_10'] text-6xl tracking-widest transition-colors duration-300 hover:text-[#4bae46]"
+          >Musik</a
+        >
+        <a
+          href="/design"
+          class="text-white font-['Jersey_10'] text-6xl tracking-widest transition-colors duration-300 hover:text-[#4bae46]"
+          >Design</a
+        >
+        <a
+          href="/lyd"
+          class="text-white font-['Jersey_10'] text-6xl tracking-widest transition-colors duration-300 hover:text-[#4bae46]"
+          >Lyd</a
+        >
+      </nav>
+    </a>
+  </main>
+</MainLayout>

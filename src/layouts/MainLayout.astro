@@ -1,31 +1,120 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import '../styles/tailwind.css';
+import "../styles/tailwind.css";
+import GlitchTransition from "../components/GlitchTransition.jsx";
 const { title } = Astro.props;
 ---
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{Astro.props.title}</title>
-		<script defer src="https://unpkg.com/tailwindcss-intersect@2.x.x/dist/observer.min.js"></script>
-	</head>
-	<body>
 
-		<header>
-			<Header></Header>
-		</header>
-		
-		<main>
-			<slot />
-		</main>
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title ?? "Mit site"}</title>
 
-		<footer>
-			<Footer></Footer>
-		</footer>
-			
-	</body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* 
+        Bruger cursor.png som standard cursor.
+        De to tal (16 16) er hotspot-positionen = hvor klikpunktet er i billedet.
+        Justér efter hvor du vil have "spidsen" af din cursor.
+      */
+      html,
+      body {
+        cursor:
+          url("public/images/cursor.png") 16 16,
+          auto;
+      }
+
+      /* VHS glitch keyframes - kortere, farvefejl og mere støj */
+      @keyframes glitch {
+        0% {
+          filter: none;
+          opacity: 0.1;
+        }
+        8% {
+          filter: contrast(2.5) brightness(0.2) hue-rotate(12deg) saturate(10)
+            blur(4px);
+          opacity: 0.8;
+        }
+        40% {
+          filter: blur(2px) contrast(3) brightness(0.7) hue-rotate(-16deg)
+            saturate(2.5);
+          opacity: 0.7;
+        }
+        30% {
+          filter: none;
+          opacity: 0.6;
+        }
+        40% {
+          filter: contrast(2.2) brightness(1) hue-rotate(-20deg) saturate(2.2)
+            blur(2px);
+          opacity: 0.8;
+        }
+        50% {
+          filter: none;
+          opacity: 0.7;
+        }
+        60% {
+          filter: contrast(2.7) brightness(1.1) hue-rotate(18deg) saturate(2.8)
+            blur(1.5px);
+          opacity: 0.7;
+        }
+        70% {
+          filter: none;
+          opacity: 0.6;
+        }
+        80% {
+          filter: contrast(2.5) brightness(1.2) hue-rotate(-14deg) saturate(2.3)
+            blur(1px);
+          opacity: 0.7;
+        }
+        90% {
+          filter: none;
+          opacity: 0.7;
+        }
+        100% {
+          filter: none;
+          opacity: 0;
+        }
+      }
+      .animate-glitch .glitch-effect {
+        animation: glitch 0.2s cubic-bezier(0.4, 0, 0.2, 0.2) both;
+        background: repeating-linear-gradient(
+          180deg,
+          #4bae46 0 2px,
+          #e368a3 10px 10px
+        );
+      }
+      .animate-glitch {
+        display: block !important;
+      }
+    </style>
+  </head>
+
+  <body class="relative overflow-x-hidden">
+    <Header />
+
+    <!-- Glitch overlay -->
+    <div
+      id="glitch-overlay"
+      class="hidden pointer-events-none fixed inset-0 z-[9999]"
+    >
+      <div class="absolute inset-0 w-full h-full glitch-effect"></div>
+    </div>
+    <GlitchTransition client:load />
+
+    <main class="relative min-h-screen">
+      <!-- Her kommer sidernes indhold -->
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
 </html>
