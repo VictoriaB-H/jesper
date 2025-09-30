@@ -14,12 +14,16 @@ import MainLayout from "../layouts/MainLayout.astro";
     >
       <source src="/videos/støj.mp4" type="video/mp4" />
     </video>
-
-    <!-- TV overlay -->
+    <!-- TV overlay: desktop og mobil -->
     <img
       src="/images/tv.svg"
-      alt="TV Overlay"
-      class="absolute inset-0 w-full h-full object-cover z-20 pointer-events-none"
+      alt="TV Overlay desktop"
+      class="hidden sm:block absolute inset-0 w-full h-full object-cover z-20 pointer-events-none"
+    />
+    <img
+      src="/images/mobil.svg"
+      alt="TV Overlay mobil"
+      class="block sm:hidden absolute inset-0 w-full h-full object-cover z-20 pointer-events-none"
     />
 
     <!-- Logo/menu til venstre -->
@@ -27,7 +31,7 @@ import MainLayout from "../layouts/MainLayout.astro";
       href="/"
       class="absolute left-35 top-26 -translate-y-1/2 z-30 flex flex-col items-center group"
     >
-      <img src="/images/logo.png" alt="Logo" class="w-30 h-30 mb-2" />
+      <img src="/images/logo.png" alt="Logo" class="w-50 h-50 mb-2" />
 
       <!-- Kategorier centreret -->
       <nav
