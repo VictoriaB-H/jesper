@@ -1,6 +1,7 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import TilbageKnap from "../components/TilbageKnap.astro";
+import BilledeKarussel from "../components/BilledeKarussel.jsx";
 ---
 
 <MainLayout title="Jesper Williander">
@@ -26,89 +27,36 @@ import TilbageKnap from "../components/TilbageKnap.astro";
     <img
       src="/images/mobil.svg"
       alt="TV Overlay mobil"
-      class="block sm:hidden absolute inset-0 w-full h-full object-cover z-20 pointer-events-none"
+      class="block sm:hidden absolute inset-0 w-full h-full object-cover z-40 pointer-events-none"
     />
-
-    <!-- Indhold -->
-    <section class="absolute inset-0 flex items-center justify-center z-30">
-      <div
-        class="px-12 py-10 flex flex-row gap-12 items-start w-[80vw] max-w-6xl"
-      >
-        <!-- Venstre kolonne -->
-        <div
-          class="flex flex-col items-start w-1/3 min-w-[220px] mt-38 sm:w-full sm:mt-4 sm:items-center sm:text-center"
-        >
-          <h1
-            class="text-white font-['Jersey_10'] text-5xl mb-8 sm:text-3xl sm:mb-4"
-          >
-            Billeder
-          </h1>
-          <p class="text-white text-base leading-relaxed sm:text-xs sm:px-2">
-            Rovidem. Genieniisquia aut aceaquarn excerro ipsant dolupta derorpo
-            ristius eumquam fuga. Ut re quisseque omnienid itaquatis cusamus
-            dolorestota ped quod etur suntio. Cesciea voluptatur? Qui bearum
-            quis dicabo. Ipsam audame ipsam veraepelibus auta nobis elest
-            eatquodit vent, nus dus.
-          </p>
-        </div>
-        <!-- Grid med billeder -->
-        <div
-          class="grid grid-cols-3 grid-rows-3 gap-6 w-2/3 sm:grid-cols-2 sm:grid-rows-5 sm:gap-2 sm:w-full"
-        >
-          <img
-            src="/images/billede1.JPG"
-            alt="Billede 1"
-            class="rounded-xl border-4 border-[#7ed957] object-cover sm:h-24 sm:w-full"
-          />
-          <img
-            src="/images/billede2.JPG"
-            alt="Billede 2"
-            class="rounded-xl border-4 border-[#7ed957] object-cover sm:h-24 sm:w-full"
-          />
-          <img
-            src="/images/billede1.JPG"
-            alt="Billede 3"
-            class="rounded-xl border-4 border-[#7ed957] object-cover sm:h-24 sm:w-full"
-          />
-          <img
-            src="/images/billede2.JPG"
-            alt="Billede 4"
-            class="rounded-xl border-4 border-[#7ed957] object-cover sm:h-24 sm:w-full"
-          />
-          <img
-            src="/images/billede1.JPG"
-            alt="Billede 5"
-            class="rounded-xl border-4 border-[#7ed957] object-cover sm:h-24 sm:w-full"
-          />
-          <img
-            src="/images/billede2.JPG"
-            alt="Billede 6"
-            class="rounded-xl border-4 border-[#7ed957] object-cover sm:h-24 sm:w-full"
-          />
-          <img
-            src="/images/billede1.JPG"
-            alt="Billede 7"
-            class="rounded-xl border-4 border-[#7ed957] object-cover sm:h-24 sm:w-full"
-          />
-          <img
-            src="/images/billede2.JPG"
-            alt="Billede 8"
-            class="rounded-xl border-4 border-[#7ed957] object-cover sm:h-24 sm:w-full"
-          />
-          <img
-            src="/images/billede1.JPG"
-            alt="Billede 9"
-            class="rounded-xl border-4 border-[#7ed957] object-cover sm:h-24 sm:w-full"
-          />
-        </div>
-      </div>
-    </section>
     <!-- Logo/menu til venstre -->
     <a
       href="/"
-      class="absolute left-35 top-26 -translate-y-1/2 z-30 flex flex-col items-center group"
+      class="absolute left-15 top-11 z-30 flex flex-col items-center group
+        sm:left-4 sm:top-25
+        md:left-5 md:top-20
+        lg:left-40 lg:top-15"
     >
-      <img src="/images/logo.png" alt="Logo" class="w-30 h-30 mb-2" />
+      <img
+        src="/images/logo.png"
+        alt="Logo"
+        class="w-20 h-20 mb-2 sm:w-12 sm:h-12 md:w-20 md:h-20 lg:w-28 lg:h-28"
+      />
     </a>
+
+    <!-- Indhold -->
+    <section
+      class="absolute inset-0 flex flex-col items-center justify-center z-30 px-4 text-center"
+    >
+      <h1
+        class="text-white font-['Jersey_10'] text-5xl sm:text-6xl md:text-7xl lg:text-8xl -mt-20 mb-20"
+      >
+        Billeder
+      </h1>
+
+      <div class="w-full max-w-5xl">
+        <BilledeKarussel client:load />
+      </div>
+    </section>
   </main>
 </MainLayout>

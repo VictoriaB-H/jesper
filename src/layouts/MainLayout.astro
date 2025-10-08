@@ -26,18 +26,13 @@ const { title } = Astro.props;
         Justér efter hvor du vil have "spidsen" af din cursor.
       */
       html,
-      body {
-        cursor:
-          url("/images/cursor.png") 16 16,
-          auto;
-      }
-
-      /* Klikbare elementer skal stadig have pointer-følelse */
+      body,
       a,
-      button {
+      button,
+      .cursor-pointer {
         cursor:
           url("/images/cursor.png") 16 16,
-          pointer;
+          auto !important;
       }
 
       /* VHS glitch keyframes - kortere, farvefejl og mere støj */
