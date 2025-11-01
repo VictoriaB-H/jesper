@@ -1,174 +1,136 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import TilbageKnap from "../components/TilbageKnap.astro";
+
+const videos = [
+  {
+    title: "Afsnit 1. Toast amok",
+    subtitle: "I dagens afsnit skal alle drengene i køkkenet...",
+    thumb: "/images/thumbsup.png",
+    src: "/videos/afsnit1.mp4",
+    year: "2023",
+    description: "Et eksperimenterende afsnit med fokus på morgenmadens helte."
+  },
+  {
+    title: "Afsnit 2. Sunday roast",
+    subtitle: "Drengene samles om en klassisk søndagsmiddag.",
+    thumb: "/images/thumbsup.png",
+    src: "/videos/afsnit2.mp4",
+    year: "2024",
+    description: "En varm og hyggelig episode med klassisk comfort food."
+  },
+  {
+    title: "Afsnit 3. Aldrig mer",
+    subtitle: "Når eksperimentet går galt – og alt brænder på.",
+    thumb: "/images/thumbsup.png",
+    src: "/videos/afsnit3.mp4",
+    year: "2024",
+    description: "En dramatisk afslutning på sæsonen, hvor intet går som planlagt."
+  },
+  // Tilføj flere her
+];
 ---
 
-<MainLayout title="Jesper Williander">
+<MainLayout title="Portfolio – Jesper Williander">
   <TilbageKnap />
-  <main class="relative w-full h-screen overflow-hidden">
-    <!-- Baggrundsvideo -->
-    <video
-      autoplay
-      muted
-      loop
-      playsinline
-      class="absolute inset-0 w-full h-full object-cover opacity-100 z-10 mix-blend-overlay"
-    >
+  <main class="relative w-full min-h-screen overflow-hidden  text-white">
+    <!-- Baggrund -->
+    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-30 z-10">
       <source src="/videos/støj.mp4" type="video/mp4" />
     </video>
 
-    <!-- TV overlay: desktop og mobil -->
-    <img
-      src="/images/tv.svg"
-      alt="TV Overlay desktop"
-      class="hidden sm:block absolute inset-0 w-full h-full object-cover z-20 pointer-events-none"
-    />
-    <img
-      src="/images/mobil.svg"
-      alt="TV Overlay mobil"
-      class="block sm:hidden absolute inset-0 w-full h-full object-cover z-20 pointer-events-none"
-    />
-
-    <!-- Logo/menu til venstre -->
-    <a
-      href="/"
-      class="absolute left-8 top-8 z-30 flex flex-col items-center group sm:left-25 sm:top-11"
-    >
-      <img
-        src="/images/logo.png"
-        alt="Logo"
-        class="w-20 h-20 mb-2 sm:w-50 sm:h-50"
-      />
-    </a>
+    <!-- Overlay grafik -->
+    <img src="/images/tv.svg" alt="TV Overlay" class="hidden sm:block absolute inset-0 w-full h-full object-cover z-20 pointer-events-none" />
 
     <!-- Indhold -->
-    <section class="absolute inset-0 flex items-center justify-center z-30">
-      <div
-        class="px-12 py-10 flex flex-row gap-12 items-start w-[80vw] max-w-5xl"
-      >
-        <!-- Venstre kolonne -->
-        <div
-          class="flex flex-col items-start w-1/3 min-w-[220px] sm:w-full sm:mt-4 sm:items-center sm:text-center"
-        >
-          <h1
-            class="text-white font-['Jersey_10'] text-5xl mb-8 sm:text-2xl sm:mb-4"
-          >
-            Bruner<br />& Roder
-          </h1>
-          <p class="text-white text-base leading-relaxed sm:text-xs sm:px-2">
-            Rovidem. Genieniisquia aut aceaquarn excerro ipsant dolupta derorpo
-            ristius eumquam fuga. Ut re quisseque omnienid itaquatis cusamus
-            dolorestota ped quod etur suntio. Cesciea voluptatur? Qui bearum
-            quis dicabo. Ipsam audame ipsam veraepelibus auta nobis elest
-            eatquodit vent, nus dus.
-          </p>
-        </div>
-        <!-- Højre kolonne med videoer -->
-        <div class="flex flex-col gap-10 w-2/3 sm:gap-4 sm:w-full">
-          <!-- Video 1 -->
-          <div class="flex flex-row items-center gap-6 sm:flex-col sm:gap-2">
-            <div class="flex flex-col w-2/3 sm:w-full">
-              <h2
-                class="text-white font-['Jersey_10'] text-2xl mb-1 sm:text-lg sm:mb-0"
-              >
-                Afsnit 1. toast amok
-              </h2>
-              <p class="text-white text-base leading-relaxed sm:text-xs">
-                I dagens afsnit skal alle drengene i køkkenet. bla bla bla der
-                laves diverse gode ting og sager
-              </p>
-            </div>
-            <div class="relative w-48 h-32 sm:w-full sm:h-24">
-              <img
-                src="/images/thumbsup.png"
-                alt="Video 1"
-                class="rounded-xl border-4 border-[#7ed957] object-cover w-full h-full aspect-video"
-              />
-              <span class="absolute inset-0 flex items-center justify-center">
-                <svg
-                  width="48"
-                  height="48"
-                  viewBox="0 0 48 48"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="24" cy="24" r="22" fill="#fff" fill-opacity="0.7"
-                  ></circle>
-                  <polygon points="20,16 36,24 20,32" fill="#222"></polygon>
-                </svg>
-              </span>
-            </div>
-          </div>
-          <!-- Video 2 -->
-          <div class="flex flex-row items-center gap-6 sm:flex-col sm:gap-2">
-            <div class="flex flex-col w-2/3 sm:w-full">
-              <h2
-                class="text-white font-['Jersey_10'] text-2xl mb-1 sm:text-lg sm:mb-0"
-              >
-                Afsnit 2. Sunday roast
-              </h2>
-              <p class="text-white text-base leading-relaxed sm:text-xs">
-                I dagens afsnit skal alle drengene i køkkenet. bla bla bla der
-                laves diverse gode ting og sager
-              </p>
-            </div>
-            <div class="relative w-48 h-32 sm:w-full sm:h-24">
-              <img
-                src="/images/thumbsup.png"
-                alt="Video 2"
-                class="rounded-xl border-4 border-[#7ed957] object-cover w-full h-full aspect-video"
-              />
-              <span class="absolute inset-0 flex items-center justify-center">
-                <svg
-                  width="48"
-                  height="48"
-                  viewBox="0 0 48 48"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="24" cy="24" r="22" fill="#fff" fill-opacity="0.7"
-                  ></circle>
-                  <polygon points="20,16 36,24 20,32" fill="#222"></polygon>
-                </svg>
-              </span>
-            </div>
-          </div>
-          <!-- Video 3 -->
-          <div class="flex flex-row items-center gap-6 sm:flex-col sm:gap-2">
-            <div class="flex flex-col w-2/3 sm:w-full">
-              <h2
-                class="text-white font-['Jersey_10'] text-2xl mb-1 sm:text-lg sm:mb-0"
-              >
-                Afsnit 3. Aldrig mer
-              </h2>
-              <p class="text-white text-base leading-relaxed sm:text-xs">
-                I dagens afsnit skal alle drengene i køkkenet. bla bla bla der
-                laves diverse gode ting og sager
-              </p>
-            </div>
-            <div class="relative w-48 h-32 sm:w-full sm:h-24">
-              <img
-                src="/images/thumbsup.png"
-                alt="Video 3"
-                class="rounded-xl border-4 border-[#7ed957] object-cover w-full h-full aspect-video"
-              />
-              <span class="absolute inset-0 flex items-center justify-center">
-                <svg
-                  width="48"
-                  height="48"
-                  viewBox="0 0 48 48"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="24" cy="24" r="22" fill="#fff" fill-opacity="0.7"
-                  ></circle>
-                  <polygon points="20,16 36,24 20,32" fill="#222"></polygon>
-                </svg>
-              </span>
-            </div>
-          </div>
+    <section class="relative z-30 pt-24 pb-16 px-8">
+      <h1 class="text-center font-['Jersey_10'] text-6xl mb-16">VIDEOER</h1>
+
+      <!-- Grid med videoer -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
+  {videos.map((video, index) => (
+    <div
+      class="flex flex-col items-center cursor-pointer group"
+      data-index={index}
+      onClick={`openOverlay(${index})`}
+    >
+      <!-- Titel -->
+      <h2 class="font-['Jersey_10'] text-2xl mb-2 group-hover:text-[#7ed957] transition text-center">
+        {video.title}
+      </h2>
+
+      <!-- Video-thumbnail -->
+      <div class="relative w-full aspect-video overflow-hidden rounded-2xl border-4 border-[#7ed957] shadow-lg">
+        <img
+          src={video.thumb}
+          alt={video.title}
+          class="object-cover w-full h-full group-hover:scale-105 transition duration-300"
+        />
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/50">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="30" fill="#fff" fill-opacity="0.7" />
+            <polygon points="26,20 46,32 26,44" fill="#000"></polygon>
+          </svg>
         </div>
       </div>
+
+      <!-- Underoverskrift -->
+      <p class="text-sm mt-3 text-center opacity-80 max-w-md">{video.subtitle}</p>
+    </div>
+  ))}
+</div>
+
     </section>
+
+    <!-- Overlay (skjult som standard) -->
+    <div id="overlay" class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center p-8">
+      <div class="max-w-3xl w-full bg-[#111] p-6 rounded-2xl relative">
+        <button
+          class="absolute top-3 right-3 text-white text-2xl hover:text-[#7ed957]"
+          onclick="closeOverlay()"
+        >
+          ✕
+        </button>
+        <video id="overlayVideo" controls class="w-full rounded-xl mb-4"></video>
+        <h2 id="overlayTitle" class="font-['Jersey_10'] text-3xl mb-2"></h2>
+        <p id="overlayYear" class="text-sm opacity-70 mb-4"></p>
+        <p id="overlayDescription" class="text-base leading-relaxed"></p>
+      </div>
+    </div>
+
+    <script>
+  const videos = JSON.parse(
+    document.querySelector('script[data-videos]').textContent
+  );
+
+  const overlay = document.getElementById('overlay');
+  const overlayVideo = document.getElementById('overlayVideo');
+  const overlayTitle = document.getElementById('overlayTitle');
+  const overlayYear = document.getElementById('overlayYear');
+  const overlayDescription = document.getElementById('overlayDescription');
+
+  function openOverlay(index) {
+    const video = videos[index];
+    overlayVideo.src = video.src;
+    overlayTitle.textContent = video.title;
+    overlayYear.textContent = "Produktionsår: " + video.year;
+    overlayDescription.textContent = video.description;
+    overlay.classList.remove('hidden');
+    overlay.classList.add('flex');
+  }
+
+  function closeOverlay() {
+    overlay.classList.add('hidden');
+    overlay.classList.remove('flex');
+    overlayVideo.pause();
+  }
+</script>
+
+<!-- Gem JS-data som JSON direkte i DOM -->
+<script type="application/json" data-videos>
+  {JSON.stringify(videos)}
+</script>
+
   </main>
 </MainLayout>
+
