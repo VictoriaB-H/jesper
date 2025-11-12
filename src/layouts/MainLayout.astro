@@ -15,12 +15,23 @@ const { title } = Astro.props;
     <title>{title ?? "Mit site"}</title>
     <meta name="robots" content="noindex, nofollow, noarchive" />
     <meta name="googlebot" content="noindex, nofollow" />
+    <link rel="stylesheet" href="https://use.typekit.net/mvo3ooo.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap"
       rel="stylesheet"
     />
 
     <style>
+      /* Site font (assumes font is available via Typekit, self-hosted files or system) */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "bitcount-prop-double-square", sans-serif;
+        font-weight: 600;
+        font-style: normal;
+      }
+
       /* 
         Bruger cursor.png som standard cursor.
         De to tal (16 16) er hotspot-positionen = hvor klikpunktet er i billedet.

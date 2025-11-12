@@ -18,57 +18,147 @@ import MainLayout from "../layouts/MainLayout.astro";
     <img
       src="/images/tv.svg"
       alt="TV Overlay desktop"
-      class="hidden sm:block absolute inset-0 w-full h-full object-cover z-20 pointer-events-none"
+      class="hidden lg:block fixed inset-0 w-full h-full object-cover z-20 pointer-events-none"
+    />
+    <img
+      src="/images/tablet.svg"
+      alt="TV Overlay tablet"
+      class="hidden sm:block lg:hidden fixed inset-0 w-full h-full object-cover z-20 pointer-events-none"
     />
     <img
       src="/images/mobil.svg"
       alt="TV Overlay mobil"
-      class="block sm:hidden absolute inset-0 w-full h-full object-cover z-20 pointer-events-none"
+      class="block sm:hidden fixed inset-0 w-full h-full object-cover z-20 pointer-events-none"
     />
 
     <!-- Logo/menu til venstre -->
-    <a
+    <!-- <a
       href="/"
       class="absolute left-15 top-11 z-30 flex flex-col items-center group
         sm:left-4 sm:top-25
         md:left-5 md:top-20
         lg:left-40 lg:top-15"
-    >
-      <img
-        src="/images/logo.png"
-        alt="Logo"
-        class="w-20 h-20 mb-2 sm:w-12 sm:h-12 md:w-20 md:h-20 lg:w-28 lg:h-28"
-      />
-    </a>
-    <!-- Kategorier centreret -->
-    <nav
-      class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 flex flex-col items-center space-y-20"
-    >
-      <a
-        href="/about"
-        class="text-white font-['Jersey_10'] text-5xl tracking-widest transition-colors duration-300 hover:text-[#4bae46]"
-        >Om mig</a
-      >
-      <a
-        href="/billeder"
-        class="text-white font-['Jersey_10'] text-5xl tracking-widest transition-colors duration-300 hover:text-[#4bae46]"
-        >Billeder</a
-      >
-      <a
-        href="/videoer"
-        class="text-white font-['Jersey_10'] text-5xl tracking-widest transition-colors duration-300 hover:text-[#4bae46]"
-        >Videoer</a
-      >
-      <a
-        href="/musik"
-        class="text-white font-['Jersey_10'] text-5xl tracking-widest transition-colors duration-300 hover:text-[#4bae46]"
-        >Musik</a
-      >
-      <a
-        href="/lyd"
-        class="text-white font-['Jersey_10'] text-5xl tracking-widest transition-colors duration-300 hover:text-[#4bae46]"
-        >Lyd</a
-      >
-    </nav>
+    > -->
+    <img
+      src="/images/logo.png"
+      alt="Logo"
+      class="w-20 h-20 mb-2 sm:w-12 sm:h-12 md:w-20 md:h-20 lg:w-28 lg:h-28"
+    />
   </main>
+  <!-- Kategorier centreret -->
+  <nav
+    id="kategorierNav"
+    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 flex flex-col items-center space-y-10"
+  >
+    <!-- Arrow indicator (absolute inside nav) -->
+    <img
+      id="pilIndicator"
+      src="/images/pil.svg"
+      alt="pil"
+      class="pointer-events-none absolute left-[-5.5rem] w-10 h-10 opacity-100 transition-[top] duration-300 ease-in-out z-40"
+    />
+
+    <a
+      href="/about"
+      class="category-link text-white font-['bitcount-prop-double-square',sans-serif] font-semibold text-6xl md:text-5xl sm:text-4xl tracking-widest whitespace-nowrap transition-colors duration-300 hover:text-[#CD427A]"
+      >Om mig</a
+    >
+    <a
+      href="/videoer"
+      class="category-link text-white font-['bitcount-prop-double-square',sans-serif] font-semibold text-6xl md:text-5xl sm:text-4xl tracking-widest whitespace-nowrap transition-colors duration-300 hover:text-[#CD427A]"
+      >Videoer</a
+    >
+    <a
+      href="/billeder"
+      class="category-link text-white font-['bitcount-prop-double-square',sans-serif] font-semibold text-6xl md:text-5xl sm:text-4xl tracking-widest whitespace-nowrap transition-colors duration-300 hover:text-[#CD427A]"
+      >Billeder</a
+    >
+    <a
+      href="/design"
+      class="category-link text-white font-['bitcount-prop-double-square',sans-serif] font-semibold text-6xl md:text-5xl sm:text-4xl tracking-widest whitespace-nowrap transition-colors duration-300 hover:text-[#CD427A]"
+      >Design</a
+    >
+    <a
+      href="/kontakt"
+      class="category-link text-white font-['bitcount-prop-double-square',sans-serif] font-semibold text-6xl md:text-5xl sm:text-4xl tracking-widest whitespace-nowrap transition-colors duration-300 hover:text-[#CD427A]"
+      >Kontakt</a
+    >
+  </nav>
+
+  <style>
+    /* Small page-local styles for the arrow indicator */
+    /* Ensure the left offset works across breakpoints; adjust if needed */
+    #kategorierNav #pilIndicator {
+      left: -4.5rem; /* place arrow further to the left for larger text */
+      transform: translateY(0);
+    }
+
+    /* On smaller screens move the arrow a bit closer */
+    @media (max-width: 640px) {
+      #kategorierNav #pilIndicator {
+        left: -3rem;
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  </style>
+
+  <script>
+    // Position the arrow vertically to the center of the hovered/focused link
+    (function () {
+      const nav = document.getElementById("kategorierNav");
+      const indicator = document.getElementById("pilIndicator");
+      if (!nav || !indicator) return;
+
+      const links = Array.from(nav.querySelectorAll(".category-link"));
+      if (!links.length) return;
+
+      function placeAtLink(link) {
+        const navRect = nav.getBoundingClientRect();
+        const linkRect = link.getBoundingClientRect();
+        const top =
+          linkRect.top -
+          navRect.top +
+          linkRect.height / 2 -
+          indicator.offsetHeight / 2;
+        // set via style.top to animate with CSS transition
+        indicator.style.top = `${top}px`;
+      }
+
+      // initial position: first link
+      window.addEventListener("load", () => {
+        placeAtLink(links[0]);
+      });
+
+      // handle hover and focus for each link
+      links.forEach((link) => {
+        link.addEventListener("mouseenter", () => placeAtLink(link));
+        link.addEventListener("focus", () => placeAtLink(link));
+      });
+
+      // Optional: when mouse leaves nav, keep indicator at last hovered item (no change)
+      // Recompute on resize to maintain alignment
+      window.addEventListener("resize", () => {
+        // find the link nearest to current indicator top, or fallback to first
+        const currentTop = parseFloat(indicator.style.top) || 0;
+        let closest = links[0];
+        let minDiff = Infinity;
+        links.forEach((l) => {
+          const rect = l.getBoundingClientRect();
+          const navRect = nav.getBoundingClientRect();
+          const center =
+            rect.top -
+            navRect.top +
+            rect.height / 2 -
+            indicator.offsetHeight / 2;
+          const d = Math.abs(center - currentTop);
+          if (d < minDiff) {
+            minDiff = d;
+            closest = l;
+          }
+        });
+        placeAtLink(closest);
+      });
+    })();
+  </script>
 </MainLayout>

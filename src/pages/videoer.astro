@@ -39,12 +39,13 @@ const videos = [
       <source src="/videos/støj.mp4" type="video/mp4" />
     </video>
 
-    <!-- Overlay grafik -->
-    <img src="/images/tv.svg" alt="TV Overlay" class="hidden sm:block absolute inset-0 w-full h-full object-cover z-20 pointer-events-none" />
+  <!-- Overlay grafik -->
+  <img src="/images/tv.svg" alt="TV Overlay" class="hidden lg:block fixed inset-0 w-full h-full object-cover z-20 pointer-events-none" />
+  <img src="/images/tablet.svg" alt="TV Overlay tablet" class="hidden sm:block lg:hidden fixed inset-0 w-full h-full object-cover z-20 pointer-events-none" />
 
     <!-- Indhold -->
     <section class="relative z-30 pt-24 pb-16 px-8">
-      <h1 class="text-center font-['Jersey_10'] text-6xl mb-16">VIDEOER</h1>
+  <h1 class="text-center font-['bitcount-prop-double-square',sans-serif] font-semibold text-6xl">VIDEOER</h1>
 
       <!-- Grid med videoer -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
@@ -55,7 +56,7 @@ const videos = [
       onClick={`openOverlay(${index})`}
     >
       <!-- Titel -->
-      <h2 class="font-['Jersey_10'] text-2xl mb-2 group-hover:text-[#7ed957] transition text-center">
+      <h2 class="font-['bitcount-prop-double-square',sans-serif] font-semibold text-2xl group-hover:text-[#7ed957] transition text-center">
         {video.title}
       </h2>
 
@@ -74,8 +75,8 @@ const videos = [
         </div>
       </div>
 
-      <!-- Underoverskrift -->
-      <p class="text-sm mt-3 text-center opacity-80 max-w-md">{video.subtitle}</p>
+  <!-- Underoverskrift -->
+  <p class="text-sm text-center opacity-80 max-w-md">{video.subtitle}</p>
     </div>
   ))}
 </div>
@@ -91,9 +92,9 @@ const videos = [
         >
           ✕
         </button>
-        <video id="overlayVideo" controls class="w-full rounded-xl mb-4"></video>
-        <h2 id="overlayTitle" class="font-['Jersey_10'] text-3xl mb-2"></h2>
-        <p id="overlayYear" class="text-sm opacity-70 mb-4"></p>
+    <video id="overlayVideo" controls class="w-full rounded-xl"></video>
+  <h2 id="overlayTitle" class="font-['bitcount-prop-double-square',sans-serif] font-semibold text-3xl"></h2>
+    <p id="overlayYear" class="text-sm opacity-70"></p>
         <p id="overlayDescription" class="text-base leading-relaxed"></p>
       </div>
     </div>

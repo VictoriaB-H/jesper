@@ -23,16 +23,21 @@ import MainLayout from "../layouts/MainLayout.astro";
       <source src="/videos/logo.mp4" type="video/mp4" />
     </video> -->
 
-    <!-- TV overlay: desktop og mobil -->
+    <!-- TV overlay: desktop / tablet / mobil -->
     <img
       src="/images/tv.svg"
       alt="TV Overlay desktop"
-      class="hidden sm:block absolute inset-0 w-full h-full object-cover z-20 pointer-events-none"
+      class="hidden lg:block fixed inset-0 w-full h-full object-cover z-20 pointer-events-none"
+    />
+    <img
+      src="/images/tablet.svg"
+      alt="TV Overlay tablet"
+      class="hidden sm:block lg:hidden fixed inset-0 w-full h-full object-cover z-20 pointer-events-none"
     />
     <img
       src="/images/mobil.svg"
       alt="TV Overlay mobil"
-      class="block sm:hidden absolute inset-0 w-full h-full object-cover z-20 pointer-events-none"
+      class="block sm:hidden fixed inset-0 w-full h-full object-cover z-20 pointer-events-none"
     />
 
     <!-- Centreret logo og knap -->
@@ -46,7 +51,7 @@ import MainLayout from "../layouts/MainLayout.astro";
       /> -->
       <a
         href="/kategorier"
-        class="px-8 py-4 text-white font-['Jersey_10'] text-3xl tracking-widest whitespace-nowrap transition-colors duration-300 hover:text-[#4bae46] sm:text-4xl sm:px-4 sm:py-2 sm: mt-120"
+        class="px-8 py-4 text-white font-['bitcount-prop-double-square',sans-serif] font-semibold text-3xl tracking-widest whitespace-nowrap transition-colors duration-300 hover:text-[#4bae46] sm:text-4xl sm:px-4 sm:py-2"
       >
         &gt; TRYK START
       </a>

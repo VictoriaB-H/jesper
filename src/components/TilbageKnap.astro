@@ -4,8 +4,21 @@
 
 <button
   onclick="window.location.href='/kategorier'"
-  class="fixed left-8 top-8 z-50 text-black font-['Jersey_10'] text-2xl px-6 py-2 hover:text-[#e368a3] sm:left-25 sm:text-3xl sm:top-43 sm:px-3 sm:py-1"
+  class="fixed left-8 top-8 z-50 text-black font-['bitcount-prop-double-square',sans-serif] font-semibold text-2xl px-3 py-2 hover:text-[#e368a3] sm:left-25 sm:text-3xl sm:top-43 sm:px-3 sm:py-1 flex items-center justify-center"
   aria-label="Tilbage til kategorier"
 >
-  Tilbage
+  <!-- Inline SVG arrow — uses currentColor so color follows text-* utilities -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="w-8 h-8"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <polyline points="15 18 9 12 15 6"></polyline>
+  </svg>
 </button>
